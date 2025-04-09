@@ -1,0 +1,20 @@
+# Environment variables
+.env
+.env.*
+!/.env.example
+
+# macOS specific files
+.DS_Store
+
+# VSCode specific files
+.vscode/
+
+# Node.js dependencies (if applicable in the future)
+node_modules/
+
+# Python specific files (if applicable in the future)
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
