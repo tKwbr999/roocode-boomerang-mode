@@ -102,6 +102,16 @@ roo code を利用して開発上の役割分担を厳密にしたモードを�
 
 コミットメッセージのフォーマットについては [`docs/COMMIT-MESSAGE.md`](docs/COMMIT-MESSAGE.md) を参照してください。
 
+## 利用推奨 MCP
+
+### github
+
+https://github.com/modelcontextprotocol/servers/tree/main/src/github
+
+### git
+
+https://github.com/modelcontextprotocol/servers/tree/main/src/git
+
 ## ⚠️ 注意事項
 
 - 各モードは公式ドキュメントのみを参照し、一般のブログや非公式な情報源は使用しません

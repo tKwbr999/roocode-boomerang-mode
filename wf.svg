@@ -104,7 +104,7 @@
   </defs>
 
   <!-- Title -->
-  <text x="600" y="30" class="title">roo code 開発オーケストレーションフロー</text>
+  <text x="600" y="30" class="title">roo code ブーメランモードフロー</text>
 
   <!-- Swimlanes -->
   <g id="swimlanes">
