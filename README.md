@@ -117,3 +117,24 @@ https://github.com/modelcontextprotocol/servers/tree/main/src/git
 - 各モードは公式ドキュメントのみを参照し、一般のブログや非公式な情報源は使用しません
 - 不明点がある場合は、必ずイシューを通じてユーザーに確認を求めます
 - 各モードは特定の役割に特化しており、その役割以外の作業は行いません
+
+## 📚 サンプルコード
+
+### Python Hello World サンプル
+
+`example/python-hello-world` ディレクトリには、シンプルな Python の Hello World プログラムが含まれています。このサンプルは、基本的な Python プログラムの構造を示すためのものです。
+
+```python
+print("hello world")
+```
+
+## 📺 example
+
+### python で hello world (example/python-hello-world)
+
+プロジェクトの使用方法や実際の動作を確認するには、以下のデモ動画をご覧ください：
+
+https://youtu.be/YmR_L9CtyJo
+[![デモ動画](https://img.shields.io/badge/YouTube-デモ動画-red?style=flat-square&logo=youtube)](https://youtu.be/YmR_L9CtyJo)
+
+動画では、roocode-boomerang-mode の基本的な使用方法と各モードの連携方法について解説しています。
