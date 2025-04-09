@@ -10,15 +10,8 @@ import (
 	// import "github.com/spf13/viper"
 )
 
-// --- 定数・変数 (本来は設定ファイルや環境変数から読み込む) ---
-
-// jwtSecret はJWTの署名に使用するシークレットキーです。
-// 重要: 本番環境では環境変数などから安全に読み込む必要があります。
-//       ハードコードするのは非常に危険です。
-var jwtSecret = []byte("your-very-secret-key-replace-this-in-production")
-
-// jwtExpiration はJWTの有効期間です。
-var jwtExpiration = time.Hour * 24 // デフォルトは24時間
+// --- 定数 ---
+// パッケージレベルの変数は削除し、関数引数で受け取るように変更
 
 // jwtIssuer はJWTの発行者を示す文字列です。
 const jwtIssuer = "gotodo-api"
@@ -39,14 +32,14 @@ type Claims struct {
 
 // GenerateToken は指定されたユーザーIDを含むJWT文字列を生成します。
 // HS256アルゴリズムで署名されます。
-func GenerateToken(userID uuid.UUID) (string, error) {
+func GenerateToken(userID uuid.UUID, secretKey []byte, expiration time.Duration) (string, error) { // 引数に secretKey と expiration を追加
 	// ユーザーIDがNilでないことを確認
 	if userID == uuid.Nil {
 		return "", fmt.Errorf("user ID cannot be nil when generating token")
 	}
 
 	// 有効期限を設定
-	expirationTime := time.Now().Add(jwtExpiration)
+	expirationTime := time.Now().Add(expiration) // 引数の expiration を使用
 
 	// クレームを作成
 	claims := &Claims{
@@ -64,7 +57,7 @@ func GenerateToken(userID uuid.UUID) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	// シークレットキーでトークンに署名し、文字列として取得
-	tokenString, err := token.SignedString(jwtSecret)
+	tokenString, err := token.SignedString(secretKey) // 引数の secretKey を使用
 	if err != nil {
 		// 署名に失敗した場合のエラーハンドリング
 		return "", fmt.Errorf("failed to sign token: %w", err)
@@ -75,7 +68,7 @@ func GenerateToken(userID uuid.UUID) (string, error) {
 
 // ValidateToken は与えられたJWT文字列を検証し、埋め込まれたユーザーIDを返します。
 // トークンの有効期限、署名、発行者、主題なども検証されます。
-func ValidateToken(tokenString string) (uuid.UUID, error) {
+func ValidateToken(tokenString string, secretKey []byte) (uuid.UUID, error) { // 引数に secretKey を追加
 	// トークン文字列が空でないことを確認
 	if tokenString == "" {
 		return uuid.Nil, fmt.Errorf("token string cannot be empty")
@@ -93,7 +86,7 @@ func ValidateToken(tokenString string) (uuid.UUID, error) {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
 		// 正しいシークレットキーを返します。
-		return jwtSecret, nil
+		return secretKey, nil // 引数の secretKey を使用
 	})
 
 	// パースまたは検証中にエラーが発生した場合
