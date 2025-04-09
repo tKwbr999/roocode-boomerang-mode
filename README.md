@@ -138,3 +138,9 @@ https://youtu.be/YmR_L9CtyJo
 [![デモ動画](https://img.shields.io/badge/YouTube-デモ動画-red?style=flat-square&logo=youtube)](https://youtu.be/YmR_L9CtyJo)
 
 動画では、roocode-boomerang-mode の基本的な使用方法と各モードの連携方法について解説しています。
+
+作成イシュー:
+https://github.com/tKwbr999/roocode-boomerang-mode/issues/3
+
+作成 PR:
+https://github.com/tKwbr999/roocode-boomerang-mode/pull/4
