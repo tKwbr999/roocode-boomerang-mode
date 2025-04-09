@@ -13,7 +13,6 @@ roo code の開発タスク自動化は、複数の AI モード間の連携に�
 - **AI-T**: テスト実装エージェント（Test Implementer）
 - **AI-D**: 機能実装エージェント（Development Implementer）
 - **AI-Q**: 品質チェック兼コードレビューエージェント（Quality Checker）
-- **AI-I**: 実装エージェント（Implementer）- 一般的な実装作業を担当し、コミットメッセージのフォーマットを統一して作成
 
 ## 詳細ワークフロー
 
@@ -601,7 +600,7 @@ roo code の開発タスク自動化は、複数の AI モード間の連携に�
 各タスク完了時に、以下の形式でコミットメッセージを作成してください：
 
 ```
-feat|fix|docs|style|refactor|test|chore: [AI-I] タスク完了の概要
+feat|fix|docs|style|refactor|test|chore: [AI-P] タスク完了の概要
 
 ### 変更内容の詳細
 

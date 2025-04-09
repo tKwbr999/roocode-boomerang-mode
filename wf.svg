@@ -138,10 +138,9 @@
     <rect x="800" y="50" width="150" height="50" class="swimlane-header agent-q"/>
     <text x="875" y="80" class="swimlane-title">AI-Q</text>
 
-    <!-- AI-I Swimlane -->
+    <!-- EMPTY Swimlane -->
     <rect x="950" y="50" width="150" height="3300" class="swimlane"/>
     <rect x="950" y="50" width="150" height="50" class="swimlane-header agent-i"/>
-    <text x="1025" y="80" class="swimlane-title">AI-I</text>
   </g>
 
   <!-- Phase Labels -->
@@ -403,11 +402,6 @@
   <text x="275" y="3280" class="activity-label">イシューを</text>
   <text x="275" y="3295" class="activity-label">クローズに更新</text>
 
-  <!-- AI-I part -->
-  <rect x="975" y="3150" width="100" height="60" class="activity"/>
-  <text x="1025" y="3180" class="activity-label">コミットメッセージ</text>
-  <text x="1025" y="3195" class="activity-label">形式統一</text>
-
   <!-- End node -->
   <circle cx="275" cy="3360" r="15" class="start-end"/>
   <circle cx="275" cy="3360" r="10" fill="white"/>
@@ -417,13 +411,5 @@
   <path d="M 275,3110 L 275,3150" class="control-flow"/>
   <path d="M 275,3210 L 275,3250" class="control-flow"/>
   <path d="M 275,3310 L 275,3345" class="control-flow"/>
-  <path d="M 325,3180 L 975,3180" class="control-flow" stroke-dasharray="3,3"/>
 
-  <!-- Note about commit message format -->
-  <rect x="965" y="3240" width="120" height="100" class="note"/>
-  <text x="1025" y="3260" class="activity-label">コミットメッセージ:</text>
-  <text x="1025" y="3275" class="activity-label">feat|fix|docs|style|</text>
-  <text x="1025" y="3290" class="activity-label">refactor|test|chore:</text>
-  <text x="1025" y="3305" class="activity-label">[AI-I] タスク完了</text>
-  <text x="1025" y="3320" class="activity-label">の概要...</text>
 </svg>

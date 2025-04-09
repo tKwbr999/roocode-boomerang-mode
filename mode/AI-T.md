@@ -281,7 +281,6 @@ feat|fix|docs|style|refactor|test|chore: [AI-{モード}] フェーズ完了の�
 - `[AI-T]`: テスト実装エージェント (Test Implementer)
 - `[AI-D]`: 機能実装エージェント (Development Implementer)
 - `[AI-Q]`: 品質チェックエージェント (Quality Checker)
-- `[AI-I]`: 実装エージェント (Implementer)
 
 ### 例
 
