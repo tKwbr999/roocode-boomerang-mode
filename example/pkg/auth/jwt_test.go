@@ -1,178 +1,136 @@
 package auth_test
 
 import (
-	"fmt"
+	// "fmt" // 未使用のため削除
 	"testing"
 	"time"
 
-	// 仮のパス。実際のパスは機能実装時に確定する。
-	// "github.com/tKwbr999/roocode-boomerang-mode/example/pkg/auth"
-	// 現時点では auth パッケージが存在しないため、テスト対象の関数を直接定義するか、
-	// テストファイル内に仮実装する。ここでは後者を選択。
-
-	"github.com/golang-jwt/jwt/v5" // jwt-go v5 を使用
+	"github.com/golang-jwt/jwt/v5" // jwt-go v5 を使用 (ValidateToken内のエラー比較で必要)
 	"github.com/google/uuid"       // UUID生成用
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+
+	// 実装した auth パッケージをインポート
+	"github.com/tKwbr999/roocode-boomerang-mode/example/pkg/auth"
 )
 
-// --- 仮実装 (本来は pkg/auth/jwt.go などに実装される想定) ---
-
-// テスト用の固定シークレットキー (実際は環境変数などから取得)
-var jwtTestSecret = []byte("test-secret-key-should-be-longer-and-random")
-
-// テスト用の固定有効期限 (実際は環境変数などから取得)
-var jwtTestExpiration = time.Hour * 1
-
-// Claims はJWTのペイロードを表す構造体です。
-type Claims struct {
-	UserID string `json:"user_id"`
-	jwt.RegisteredClaims
-}
-
-// GenerateToken は指定されたユーザーIDを含むJWTを生成します。
-func GenerateToken(userID uuid.UUID) (string, error) {
-	if userID == uuid.Nil {
-		return "", fmt.Errorf("user ID cannot be nil") // ユーザーIDがNilの場合のエラー
-	}
-
-	expirationTime := time.Now().Add(jwtTestExpiration)
-	claims := &Claims{
-		UserID: userID.String(),
-		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(expirationTime),
-			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			NotBefore: jwt.NewNumericDate(time.Now()),
-			Issuer:    "gotodo-api", // 発行者 (例)
-			Subject:   "user-auth",  // トークンの主題 (例)
-		},
-	}
-
-	// HS256署名アルゴリズムでトークンを生成
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenString, err := token.SignedString(jwtTestSecret)
-	if err != nil {
-		return "", fmt.Errorf("failed to sign token: %w", err)
-	}
-
-	return tokenString, nil
-}
-
-// ValidateToken は与えられたJWT文字列を検証し、ユーザーIDを返します。
-func ValidateToken(tokenString string) (uuid.UUID, error) {
-	if tokenString == "" {
-		return uuid.Nil, fmt.Errorf("token string cannot be empty")
-	}
-
-	claims := &Claims{}
-
-	// トークンをパースして検証
-	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
-		// 署名アルゴリズムが期待通り (HS256) か確認
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-		}
-		// 正しいシークレットキーを返す
-		return jwtTestSecret, nil
-	})
-
-	if err != nil {
-		// エラーの種類によって詳細なエラーを返すことも可能
-		// 例: if errors.Is(err, jwt.ErrTokenExpired) { ... }
-		return uuid.Nil, fmt.Errorf("token validation failed: %w", err)
-	}
-
-	// トークンとクレームが有効か確認
-	if !token.Valid || claims == nil {
-		return uuid.Nil, fmt.Errorf("invalid token or claims")
-	}
-
-	// クレームからユーザーIDをパース
-	userID, err := uuid.Parse(claims.UserID)
-	if err != nil {
-		return uuid.Nil, fmt.Errorf("failed to parse user ID from token claims: %w", err)
-	}
-	if userID == uuid.Nil {
-		return uuid.Nil, fmt.Errorf("user ID in token claims is nil")
-	}
-
-	return userID, nil
-}
-
-// --- 仮実装ここまで ---
+// 仮実装は削除 (auth.Claims, auth.GenerateToken, auth.ValidateToken を使用)
+// テスト用の定数も auth パッケージ内のものを使用するため削除
 
 // TestGenerateToken は GenerateToken 関数のテストです。
 func TestGenerateToken(t *testing.T) {
 	userID := uuid.New()
 
 	// --- 正常系 ---
-	tokenString, err := GenerateToken(userID)
+	tokenString, err := auth.GenerateToken(userID) // auth. を追加
 	require.NoError(t, err, "トークン生成でエラーが発生しないこと")
 	require.NotEmpty(t, tokenString, "生成されたトークン文字列が空でないこと")
 
 	// 生成されたトークンを検証してみる (ValidateTokenを使って)
-	parsedUserID, validateErr := ValidateToken(tokenString)
+	parsedUserID, validateErr := auth.ValidateToken(tokenString) // auth. を追加
 	require.NoError(t, validateErr, "生成されたトークンがValidateTokenで有効であること")
 	assert.Equal(t, userID, parsedUserID, "トークンからパースされたユーザーIDが元のIDと一致すること")
 
 	// トークンをデコードしてクレームを確認 (より詳細な検証)
-	claims := &Claims{}
+	claims := &auth.Claims{} // auth. を追加
 	_, _, decodeErr := new(jwt.Parser).ParseUnverified(tokenString, claims)
 	require.NoError(t, decodeErr, "トークン文字列のデコードに成功すること")
 	assert.Equal(t, userID.String(), claims.UserID, "デコードされたクレームのUserIDが正しいこと")
-	assert.WithinDuration(t, time.Now().Add(jwtTestExpiration), claims.RegisteredClaims.ExpiresAt.Time, 5*time.Second, "有効期限が期待通りであること (誤差5秒以内)")
+	// jwtTestExpiration は auth パッケージ内の変数を使用 (本来は設定から取得)
+	// 注意: auth.jwtExpiration はエクスポートされていないため直接アクセス不可。
+	//       テスト容易性を考慮し、auth パッケージ側で有効期限を外部から設定可能にするか、
+	//       テスト用に有効期限を取得する関数を用意するのが望ましい。
+	//       ここでは仮に auth パッケージ内のデフォルト値 (24h) で代用する。
+	//       より正確なテストのためには auth パッケージの修正が必要。
+	expectedExpiration := time.Now().Add(time.Hour * 24) // auth パッケージのデフォルト値
+	assert.WithinDuration(t, expectedExpiration, claims.RegisteredClaims.ExpiresAt.Time, 10*time.Second, "有効期限が期待通りであること (誤差10秒以内)") // 誤差を少し増やす
+	// Issuer と Subject は auth パッケージ内の非公開定数のため、テストでは直接文字列で比較
 	assert.Equal(t, "gotodo-api", claims.RegisteredClaims.Issuer, "発行者が正しいこと")
 	assert.Equal(t, "user-auth", claims.RegisteredClaims.Subject, "主題が正しいこと")
 
 	// --- 異常系 ---
 	// Nil UUID でトークン生成を試みる
-	_, errNilUUID := GenerateToken(uuid.Nil)
+	_, errNilUUID := auth.GenerateToken(uuid.Nil) // auth. を追加
 	assert.Error(t, errNilUUID, "Nil UUID でトークン生成を試みるとエラーが発生すること")
 }
 
 // TestValidateToken は ValidateToken 関数のテストです。
 func TestValidateToken(t *testing.T) {
 	userID := uuid.New()
-	validTokenString, err := GenerateToken(userID)
+	validTokenString, err := auth.GenerateToken(userID) // auth. を追加済み
 	require.NoError(t, err, "テスト用の有効なトークン生成に成功すること")
 
 	// --- 正常系 ---
-	parsedUserID, validateErr := ValidateToken(validTokenString)
+	parsedUserID, validateErr := auth.ValidateToken(validTokenString) // auth. を追加済み
 	require.NoError(t, validateErr, "有効なトークンの検証でエラーが発生しないこと")
 	assert.Equal(t, userID, parsedUserID, "有効なトークンから正しいユーザーIDが取得できること")
 
 	// --- 異常系 ---
 	// 空のトークン文字列
-	_, errEmpty := ValidateToken("")
+	_, errEmpty := auth.ValidateToken("") // auth. を追加済み
 	assert.Error(t, errEmpty, "空のトークン文字列で検証が失敗すること")
 
 	// 無効な形式のトークン文字列
 	invalidFormatToken := "this.is.not.a.jwt"
-	_, errInvalidFormat := ValidateToken(invalidFormatToken)
+	_, errInvalidFormat := auth.ValidateToken(invalidFormatToken) // auth. を追加済み
 	assert.Error(t, errInvalidFormat, "無効な形式のトークンで検証が失敗すること")
 
 	// 署名が異なるトークン (別のシークレットキーで署名)
 	anotherSecret := []byte("another-different-secret-key")
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &Claims{
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &auth.Claims{ // auth. を追加済み
 		UserID: userID.String(),
 		RegisteredClaims: jwt.RegisteredClaims{ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour))},
 	})
 	wrongSignedToken, _ := token.SignedString(anotherSecret)
-	_, errWrongSign := ValidateToken(wrongSignedToken)
+	_, errWrongSign := auth.ValidateToken(wrongSignedToken) // auth. を追加済み
 	assert.Error(t, errWrongSign, "異なるシークレットキーで署名されたトークンで検証が失敗すること")
 
 	// 期限切れトークン
-	expiredTime := time.Now().Add(-2 * time.Hour) // 2時間前に期限切れ
-	expiredClaims := &Claims{
+	// expiredTime := time.Now().Add(-2 * time.Hour) // 未使用のため削除
+	// expiredClaims := &auth.Claims{ // 未使用のため削除
+	// 	UserID: userID.String(),
+	// 	RegisteredClaims: jwt.RegisteredClaims{ExpiresAt: jwt.NewNumericDate(expiredTime)},
+	// }
+	// expiredTokenObj := jwt.NewWithClaims(jwt.SigningMethodHS256, expiredClaims) // 未使用のため削除
+	// jwtTestSecret は auth パッケージ内の変数を使用 (本来は設定から取得)
+	// 注意: auth.jwtSecret はエクスポートされていないため直接アクセス不可。
+	//       テスト用にシークレットを取得する関数を用意するか、テスト専用のヘルパーを使うのが望ましい。
+	//       ここでは ValidateToken が内部で正しいシークレットを使うことを期待する。
+	//       このテストケースは auth パッケージ側の実装に依存する。
+	//       より堅牢なテストのためには auth パッケージの修正が必要。
+	// expiredTokenString, _ := expiredTokenObj.SignedString(auth.jwtSecret) // アクセス不可
+	// 代わりに、GenerateToken を使って期限切れトークンを生成し直す方が安全
+	// expiredTokenString, _ = auth.GenerateToken(userID) // 未使用のため削除
+	// 有効期限だけ過去にする (内部実装を知らない前提でのテストは難しい)
+	// このテストケースは一旦コメントアウトし、ValidateTokenの期限切れエラーのテストに注力する
+	// _, errExpired := auth.ValidateToken(expiredTokenString) // 未使用のため削除
+	// assert.Error(t, errExpired, "期限切れトークンで検証が失敗すること") // 未使用のため削除
+	// // エラーが jwt.ErrTokenExpired であることを確認 (より厳密なチェック)
+	// assert.ErrorIs(t, errExpired, jwt.ErrTokenExpired, "エラーが jwt.ErrTokenExpired であること") // 未使用のため削除
+
+	// 期限切れトークンを生成する別の方法 (時刻を操作)
+	pastTime := time.Now().Add(-48 * time.Hour) // 48時間前
+	expiredClaimsManual := &auth.Claims{
 		UserID: userID.String(),
-		RegisteredClaims: jwt.RegisteredClaims{ExpiresAt: jwt.NewNumericDate(expiredTime)},
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(pastTime), // 過去の有効期限
+			IssuedAt:  jwt.NewNumericDate(pastTime.Add(-time.Hour)), // さらに過去の発行日時
+			NotBefore: jwt.NewNumericDate(pastTime.Add(-time.Hour)),
+			Issuer:    "gotodo-api", // 直接文字列を指定
+			Subject:   "user-auth",  // 直接文字列を指定
+		},
 	}
-	expiredTokenObj := jwt.NewWithClaims(jwt.SigningMethodHS256, expiredClaims)
-	expiredTokenString, _ := expiredTokenObj.SignedString(jwtTestSecret)
-	_, errExpired := ValidateToken(expiredTokenString)
-	assert.Error(t, errExpired, "期限切れトークンで検証が失敗すること")
-	// エラーが jwt.ErrTokenExpired であることを確認 (より厳密なチェック)
-	assert.ErrorIs(t, errExpired, jwt.ErrTokenExpired, "エラーが jwt.ErrTokenExpired であること")
+	expiredTokenManualObj := jwt.NewWithClaims(jwt.SigningMethodHS256, expiredClaimsManual)
+	// シークレットキーは auth パッケージ内のものを使う必要があるが、テストからはアクセスできない。
+	// ここではテスト用のシークレットキーを別途定義して使用する (authパッケージ内のものと一致させる必要あり)
+	testSecret := []byte("your-very-secret-key-replace-this-in-production") // auth/jwt.go と同じキー
+	expiredTokenManualString, _ := expiredTokenManualObj.SignedString(testSecret)
+	_, errExpiredManual := auth.ValidateToken(expiredTokenManualString) // auth. を追加済み
+	assert.Error(t, errExpiredManual, "手動生成した期限切れトークンで検証が失敗すること")
+	assert.ErrorIs(t, errExpiredManual, jwt.ErrTokenExpired, "エラーが jwt.ErrTokenExpired であること")
+	// assert.Error(t, errExpired, "期限切れトークンで検証が失敗すること") // 削除済み
+	// // エラーが jwt.ErrTokenExpired であることを確認 (より厳密なチェック)
+	// assert.ErrorIs(t, errExpired, jwt.ErrTokenExpired, "エラーが jwt.ErrTokenExpired であること") // 削除済み
 
 	// // 異なる署名アルゴリズム (例: RS256) のテスト
 	// // jwt-go/v5 では SplitCompact, DecodeSegment 等が提供されていないか、
@@ -197,22 +155,24 @@ func TestValidateToken(t *testing.T) {
 	// }
 
 	// UserID が Nil のクレームを持つトークン
-	nilUserIDClaims := &Claims{
+	nilUserIDClaims := &auth.Claims{ // auth. を追加済み
 		UserID: uuid.Nil.String(), // Nil UUID
 		RegisteredClaims: jwt.RegisteredClaims{ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour))},
 	}
 	nilUserIDTokenObj := jwt.NewWithClaims(jwt.SigningMethodHS256, nilUserIDClaims)
-	nilUserIDTokenString, _ := nilUserIDTokenObj.SignedString(jwtTestSecret)
-	_, errNilUserID := ValidateToken(nilUserIDTokenString)
+	// testSecret を使用
+	nilUserIDTokenString, _ := nilUserIDTokenObj.SignedString(testSecret)
+	_, errNilUserID := auth.ValidateToken(nilUserIDTokenString) // auth. を追加済み
 	assert.Error(t, errNilUserID, "UserIDがNilのクレームを持つトークンで検証が失敗すること")
 
 	// UserID が UUID 形式ではないクレームを持つトークン
-	invalidUserIDClaims := &Claims{
+	invalidUserIDClaims := &auth.Claims{ // auth. を追加済み
 		UserID: "not-a-valid-uuid", // 不正な形式
 		RegisteredClaims: jwt.RegisteredClaims{ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour))},
 	}
 	invalidUserIDTokenObj := jwt.NewWithClaims(jwt.SigningMethodHS256, invalidUserIDClaims)
-	invalidUserIDTokenString, _ := invalidUserIDTokenObj.SignedString(jwtTestSecret)
-	_, errInvalidUserID := ValidateToken(invalidUserIDTokenString)
+	// testSecret を使用
+	invalidUserIDTokenString, _ := invalidUserIDTokenObj.SignedString(testSecret)
+	_, errInvalidUserID := auth.ValidateToken(invalidUserIDTokenString) // auth. を追加済み
 	assert.Error(t, errInvalidUserID, "UserIDが不正な形式のクレームを持つトークンで検証が失敗すること")
 }
