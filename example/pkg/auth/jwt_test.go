@@ -20,8 +20,8 @@ import (
 // TestGenerateToken は GenerateToken 関数のテストです。
 func TestGenerateToken(t *testing.T) {
 	userID := uuid.New()
-	// テスト用のシークレットと有効期限を定義
-	testSecret := []byte("test-secret-for-generate")
+	// テスト用のシークレットと有効期限を定義 (環境変数から読み込まれる想定の値を使用)
+	testSecret := []byte("test-jwt-secret") // .env で設定される想定の値
 	testExpiration := time.Minute * 15
 
 	// --- 正常系 ---
@@ -60,10 +60,10 @@ func TestGenerateToken(t *testing.T) {
 // TestValidateToken は ValidateToken 関数のテストです。
 func TestValidateToken(t *testing.T) {
 	userID := uuid.New()
-	// テスト用のシークレットと有効期限を定義 (ValidateToken用)
-	validateTestSecret := []byte("test-secret-for-validate")
+	// テスト用のシークレットと有効期限を定義 (環境変数から読み込まれる想定の値を使用)
+	validateTestSecret := []byte("test-jwt-secret") // .env で設定される想定の値
 	validateTestExpiration := time.Hour * 1
-	validTokenString, err := auth.GenerateToken(userID, validateTestSecret, validateTestExpiration) // 引数を追加
+	validTokenString, err := auth.GenerateToken(userID, validateTestSecret, validateTestExpiration)
 	require.NoError(t, err, "テスト用の有効なトークン生成に成功すること")
 
 	// --- 正常系 ---
@@ -127,9 +127,8 @@ func TestValidateToken(t *testing.T) {
 		},
 	}
 	expiredTokenManualObj := jwt.NewWithClaims(jwt.SigningMethodHS256, expiredClaimsManual)
-	// シークレットキーは auth パッケージ内のものを使う必要があるが、テストからはアクセスできない。
-	// ここではテスト用のシークレットキーを別途定義して使用する (authパッケージ内のものと一致させる必要あり)
-	// testSecret := []byte("your-very-secret-key-replace-this-in-production") // validateTestSecret を使用
+	// シークレットキーはテスト実行環境から注入される想定 (validateTestSecret を使用)
+	// testSecret の再定義は不要
 	expiredTokenManualString, _ := expiredTokenManualObj.SignedString(validateTestSecret)
 	_, errExpiredManual := auth.ValidateToken(expiredTokenManualString, validateTestSecret) // 引数を追加
 	assert.Error(t, errExpiredManual, "手動生成した期限切れトークンで検証が失敗すること")
