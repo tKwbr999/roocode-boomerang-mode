@@ -6,6 +6,7 @@
 <!-- <img src="path/to/header.png" alt="Header Image" width="600"/> -->
 
 [![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat-square&logo=markdown&logoColor=white)](https://www.markdownguide.org/)
+
 <!-- 他の技術スタックがあればバッジを追加 -->
 
 </div>
@@ -96,6 +97,10 @@ roo code を利用して開発上の役割分担を厳密にしたモードを�
 - `mode/AI-T.md`: テスト実装エージェントの設定
 - `mode/AI-D.md`: 機能実装エージェントの設定
 - `mode/AI-Q.md`: 品質チェックエージェントの設定
+
+## 📝 コミットメッセージのフォーマット
+
+コミットメッセージのフォーマットについては [`docs/COMMIT-MESSAGE.md`](docs/COMMIT-MESSAGE.md) を参照してください。
 
 ## ⚠️ 注意事項
 
