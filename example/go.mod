@@ -1,3 +1,3 @@
-module example
+module github.com/tKwbr999/roocode-boomerang-mode/example
 
-go 1.24.1
+go 1.21
