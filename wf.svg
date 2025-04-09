@@ -1,452 +1,429 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1700">
-  <!-- 背景色 -->
-  <rect width="1200" height="1700" fill="#ffffff" />
-  
-  <!-- タイトル -->
-  <text x="600" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">AIエージェントオーケストラ - UMLアクティビティ図（修正版）</text>
-  
-  <!-- スイムレーン定義 -->
-  <rect x="50" y="70" width="150" height="1580" fill="#f9f9f9" stroke="#666666" stroke-width="1" />
-  <rect x="200" y="70" width="200" height="1580" fill="#f5f5f5" stroke="#666666" stroke-width="1" />
-  <rect x="400" y="70" width="150" height="1580" fill="#f9f9f9" stroke="#666666" stroke-width="1" />
-  <rect x="550" y="70" width="150" height="1580" fill="#f5f5f5" stroke="#666666" stroke-width="1" />
-  <rect x="700" y="70" width="150" height="1580" fill="#f9f9f9" stroke="#666666" stroke-width="1" />
-  <rect x="850" y="70" width="150" height="1580" fill="#f5f5f5" stroke="#666666" stroke-width="1" />
-  <rect x="1000" y="70" width="150" height="1580" fill="#f9f9f9" stroke="#666666" stroke-width="1" />
-  
-  <!-- スイムレーンのラベル -->
-  <text x="125" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">ユーザー</text>
-  <text x="300" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-P</text>
-  <text x="475" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-A</text>
-  <text x="625" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-B</text>
-  <text x="775" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-T</text>
-  <text x="925" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-D</text>
-  <text x="1075" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">AI-Q</text>
-  
-  <!-- 開始ノード -->
-  <circle cx="125" cy="130" r="10" fill="#000000" />
-  
-  <!-- 1. タスク受付フェーズ -->
-  <!-- ユーザーがタスクを指示 -->
-  <rect x="75" y="160" width="100" height="40" rx="10" ry="10" fill="#ffffcc" stroke="#999900" stroke-width="1.5" />
-  <text x="125" y="183" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">タスク指示</text>
-  
-  <!-- 開始から「タスク指示」への矢印 -->
-  <line x1="125" y1="140" x2="125" y2="160" stroke="#000000" stroke-width="1.5" />
-  <polygon points="125,160 121,152 129,152" fill="#000000" />
-  
-  <!-- AI-Pがタスクを受け取る -->
-  <rect x="250" y="160" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="176" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">タスク受付</text>
-  <text x="300" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">基本情報記録</text>
-  
-  <!-- タスク指示からタスク受付への矢印 -->
-  <line x1="175" y1="180" x2="250" y2="180" stroke="#000000" stroke-width="1.5" />
-  <polygon points="250,180 242,176 242,184" fill="#000000" />
-  
-  <!-- 2. 分析・計画フェーズ -->
-  <!-- AI-PがAI-Aに分析を依頼 -->
-  <rect x="250" y="230" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="253" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">分析依頼</text>
-  
-  <!-- タスク受付から分析依頼への矢印 -->
-  <line x1="300" y1="200" x2="300" y2="230" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,230 296,222 304,222" fill="#000000" />
-  
-  <!-- AI-Aがタスク分析 -->
-  <rect x="425" y="230" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="475" y="246" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">タスク分析</text>
-  <text x="475" y="260" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">要件抽出</text>
-  
-  <!-- 分析依頼からタスク分析への矢印 -->
-  <line x1="350" y1="250" x2="425" y2="250" stroke="#000000" stroke-width="1.5" />
-  <polygon points="425,250 417,246 417,254" fill="#000000" />
-  
-  <!-- AI-Aが技術選定 -->
-  <rect x="425" y="300" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="475" y="316" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">技術スタック</text>
-  <text x="475" y="330" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">選定</text>
-  
-  <!-- タスク分析から技術選定への矢印 -->
-  <line x1="475" y1="270" x2="475" y2="300" stroke="#000000" stroke-width="1.5" />
-  <polygon points="475,300 471,292 479,292" fill="#000000" />
-  
-  <!-- AI-Aが分析結果を返却 -->
-  <rect x="425" y="370" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="475" y="393" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">分析結果返却</text>
-  
-  <!-- 技術選定から分析結果返却への矢印 -->
-  <line x1="475" y1="340" x2="475" y2="370" stroke="#000000" stroke-width="1.5" />
-  <polygon points="475,370 471,362 479,362" fill="#000000" />
-  
-  <!-- AI-Pが分析結果を受け取る -->
-  <rect x="250" y="370" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="393" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">分析結果受取</text>
-  
-  <!-- 分析結果返却から分析結果受取への矢印 -->
-  <line x1="425" y1="390" x2="350" y2="390" stroke="#000000" stroke-width="1.5" />
-  <polygon points="350,390 358,386 358,394" fill="#000000" />
-  
-  <!-- 3. イシュー作成フェーズ -->
-  <!-- AI-PがGitHubイシューを作成 -->
-  <rect x="250" y="440" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="456" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親GitHub</text>
-  <text x="300" y="470" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">イシュー作成</text>
-  
-  <!-- 分析結果受取からイシュー作成への矢印 -->
-  <line x1="300" y1="410" x2="300" y2="440" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,440 296,432 304,432" fill="#000000" />
-  
-  <!-- 4. 環境準備フェーズ -->
-  <!-- AI-PがAI-Bにディレクトリ作成を依頼 -->
-  <rect x="250" y="510" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="526" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">ディレクトリ</text>
-  <text x="300" y="540" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">作成依頼</text>
-  
-  <!-- イシュー作成からディレクトリ作成依頼への矢印 -->
-  <line x1="300" y1="480" x2="300" y2="510" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,510 296,502 304,502" fill="#000000" />
-  
-  <!-- AI-Bがイシュー内容を読み取る -->
-  <rect x="575" y="510" width="100" height="40" rx="10" ry="10" fill="#ffeecc" stroke="#cc6600" stroke-width="1.5" />
-  <text x="625" y="526" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシュー</text>
-  <text x="625" y="540" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">内容確認</text>
-  
-  <!-- ディレクトリ作成依頼からイシュー内容確認への矢印 -->
-  <line x1="350" y1="530" x2="575" y2="530" stroke="#000000" stroke-width="1.5" />
-  <polygon points="575,530 567,526 567,534" fill="#000000" />
-  
-  <!-- AI-Bがプロジェクト構造を設計・作成 -->
-  <rect x="575" y="580" width="100" height="40" rx="10" ry="10" fill="#ffeecc" stroke="#cc6600" stroke-width="1.5" />
-  <text x="625" y="596" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">プロジェクト</text>
-  <text x="625" y="610" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">構造作成</text>
-  
-  <!-- イシュー内容確認からプロジェクト構造作成への矢印 -->
-  <line x1="625" y1="550" x2="625" y2="580" stroke="#000000" stroke-width="1.5" />
-  <polygon points="625,580 621,572 629,572" fill="#000000" />
-  
-  <!-- AI-BがGitHubイシューに完了通知 -->
-  <rect x="575" y="650" width="100" height="40" rx="10" ry="10" fill="#ffeecc" stroke="#cc6600" stroke-width="1.5" />
-  <text x="625" y="666" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシューに</text>
-  <text x="625" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">完了通知</text>
-  
-  <!-- プロジェクト構造作成から完了通知コメントへの矢印 -->
-  <line x1="625" y1="620" x2="625" y2="650" stroke="#000000" stroke-width="1.5" />
-  <polygon points="625,650 621,642 629,642" fill="#000000" />
-  
-  <!-- AI-Pが通知を監視 -->
-  <rect x="250" y="650" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="666" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシュー監視</text>
-  <text x="300" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">環境準備完了検知</text>
-  
-  <!-- 完了通知からイシュー監視への矢印 -->
-  <line x1="575" y1="670" x2="350" y2="670" stroke="#000000" stroke-width="1.5" />
-  <polygon points="350,670 358,666 358,674" fill="#000000" />
-  
-  <!-- 5. 実装フェーズ -->
-  <!-- 並列処理の分岐点（フォーク） -->
-  <rect x="275" y="720" width="50" height="5" fill="#000000" />
-  
-  <!-- イシュー監視から並列処理分岐点への矢印 -->
-  <line x1="300" y1="690" x2="300" y2="720" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,720 296,712 304,712" fill="#000000" />
-  
-  <!-- 5-A. テスト実装 -->
-  <!-- AI-Tがイシュー内容とプロジェクト構造を確認 -->
-  <rect x="725" y="750" width="100" height="40" rx="10" ry="10" fill="#e6f9ff" stroke="#0099cc" stroke-width="1.5" />
-  <text x="775" y="766" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシュー内容</text>
-  <text x="775" y="780" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">確認</text>
-  
-  <!-- 並列処理分岐点からAI-Tイシュー内容確認への矢印 -->
-  <line x1="300" y1="725" x2="300" y2="735" stroke="#000000" stroke-width="1.5" />
-  <line x1="300" y1="735" x2="775" y2="735" stroke="#000000" stroke-width="1.5" />
-  <line x1="775" y1="735" x2="775" y2="750" stroke="#000000" stroke-width="1.5" />
-  <polygon points="775,750 771,742 779,742" fill="#000000" />
-  
-  <!-- AI-Tがテストコードを実装 -->
-  <rect x="725" y="820" width="100" height="40" rx="10" ry="10" fill="#e6f9ff" stroke="#0099cc" stroke-width="1.5" />
-  <text x="775" y="843" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">テスト実装</text>
-  
-  <!-- イシュー内容確認からテスト実装への矢印 -->
-  <line x1="775" y1="790" x2="775" y2="820" stroke="#000000" stroke-width="1.5" />
-  <polygon points="775,820 771,812 779,812" fill="#000000" />
-  
-  <!-- AI-TがGitHubイシューに完了通知 -->
-  <rect x="725" y="890" width="100" height="40" rx="10" ry="10" fill="#e6f9ff" stroke="#0099cc" stroke-width="1.5" />
-  <text x="775" y="906" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシューに</text>
-  <text x="775" y="920" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">テスト完了通知</text>
-  
-  <!-- テスト実装からテスト完了通知への矢印 -->
-  <line x1="775" y1="860" x2="775" y2="890" stroke="#000000" stroke-width="1.5" />
-  <polygon points="775,890 771,882 779,882" fill="#000000" />
-  
-  <!-- 5-B. 機能実装 -->
-  <!-- AI-Dがイシュー内容とプロジェクト構造を確認 -->
-  <rect x="875" y="750" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="925" y="766" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシュー内容</text>
-  <text x="925" y="780" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">確認</text>
-  
-  <!-- 並列処理分岐点からAI-Dイシュー内容確認への矢印 -->
-  <line x1="300" y1="725" x2="300" y2="735" stroke="#000000" stroke-width="1.5" />
-  <line x1="300" y1="735" x2="925" y2="735" stroke="#000000" stroke-width="1.5" />
-  <line x1="925" y1="735" x2="925" y2="750" stroke="#000000" stroke-width="1.5" />
-  <polygon points="925,750 921,742 929,742" fill="#000000" />
-  
-  <!-- AI-Dが機能コードを実装 -->
-  <rect x="875" y="820" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="925" y="843" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">機能実装</text>
-  
-  <!-- イシュー内容確認から機能実装への矢印 -->
-  <line x1="925" y1="790" x2="925" y2="820" stroke="#000000" stroke-width="1.5" />
-  <polygon points="925,820 921,812 929,812" fill="#000000" />
-  
-  <!-- AI-DがGitHubイシューに完了通知 -->
-  <rect x="875" y="890" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="925" y="906" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシューに</text>
-  <text x="925" y="920" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">機能完了通知</text>
-  
-  <!-- 機能実装から機能実装完了通知への矢印 -->
-  <line x1="925" y1="860" x2="925" y2="890" stroke="#000000" stroke-width="1.5" />
-  <polygon points="925,890 921,882 929,882" fill="#000000" />
-  
-  <!-- 6. 品質保証・レビューフェーズ -->
-  <!-- AI-Pが完了通知を監視 -->
-  <rect x="250" y="960" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="976" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシュー監視</text>
-  <text x="300" y="990" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">実装完了検知</text>
-  
-  <!-- テスト完了通知とイシュー監視への矢印 -->
-  <line x1="775" y1="930" x2="775" y2="945" stroke="#000000" stroke-width="1.5" />
-  <line x1="775" y1="945" x2="300" y2="945" stroke="#000000" stroke-width="1.5" />
-  <line x1="300" y1="945" x2="300" y2="960" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,960 296,952 304,952" fill="#000000" />
-  
-  <!-- 機能完了通知とイシュー監視への矢印 -->
-  <line x1="925" y1="930" x2="925" y2="945" stroke="#000000" stroke-width="1.5" />
-  <line x1="925" y1="945" x2="300" y2="945" stroke="#000000" stroke-width="1.5" />
-  <!-- この矢印は上のテスト完了通知からの矢印と合流するため、矢印の終端は不要 -->
-  
-  <!-- AI-Pが改善要求回数カウンターを初期化 -->
-  <rect x="250" y="1030" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1046" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善要求回数</text>
-  <text x="300" y="1060" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">カウンター初期化</text>
-  
-  <!-- イシュー監視からカウンター初期化への矢印 -->
-  <line x1="300" y1="1000" x2="300" y2="1030" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1030 296,1022 304,1022" fill="#000000" />
-  
-  <!-- AI-PがAI-Qを呼び出す -->
-  <rect x="250" y="1100" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1123" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">品質チェック依頼</text>
-  
-  <!-- カウンター初期化から品質チェック依頼への矢印 -->
-  <line x1="300" y1="1070" x2="300" y2="1100" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1100 296,1092 304,1092" fill="#000000" />
-  
-  <!-- AI-Qがテストと実装内容を検証 -->
-  <rect x="1025" y="1100" width="100" height="40" rx="10" ry="10" fill="#f9e6ff" stroke="#9900cc" stroke-width="1.5" />
-  <text x="1075" y="1116" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">テスト・実装</text>
-  <text x="1075" y="1130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">内容検証</text>
-  
-  <!-- 品質チェック依頼からテスト・実装内容検証への矢印 -->
-  <line x1="350" y1="1120" x2="1025" y2="1120" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1025,1120 1017,1116 1017,1124" fill="#000000" />
-  
-  <!-- 品質基準を満たしたか判断（決定ノード） -->
-  <polygon points="1075,1170 1090,1185 1075,1200 1060,1185" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-  
-  <!-- テスト・実装内容検証から決定ノードへの矢印 -->
-  <line x1="1075" y1="1140" x2="1075" y2="1170" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1075,1170 1071,1162 1079,1162" fill="#000000" />
-  
-  <!-- 6-A. 改善が必要な場合 -->
-  <!-- AI-QがGitHubイシューに改善要求をコメント -->
-  <rect x="1025" y="1230" width="100" height="40" rx="10" ry="10" fill="#f9e6ff" stroke="#9900cc" stroke-width="1.5" />
-  <text x="1075" y="1246" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">親イシューに</text>
-  <text x="1075" y="1260" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善要求コメント</text>
-  
-  <!-- 決定ノードから改善要求コメントへの矢印（No） -->
-  <line x1="1060" y1="1185" x2="1015" y2="1185" stroke="#000000" stroke-width="1.5" />
-  <line x1="1015" y1="1185" x2="1015" y2="1230" stroke="#000000" stroke-width="1.5" />
-  <line x1="1015" y1="1230" x2="1025" y2="1230" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1025,1230 1017,1226 1017,1234" fill="#000000" />
-  <text x="1015" y="1203" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">No</text>
-  
-  <!-- AI-Pが改善要求を検知 -->
-  <rect x="250" y="1230" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1246" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善要求</text>
-  <text x="300" y="1260" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">検知</text>
-  
-  <!-- 改善要求コメントから改善要求検知への矢印 -->
-  <line x1="1025" y1="1250" x2="350" y2="1250" stroke="#000000" stroke-width="1.5" />
-  <polygon points="350,1250 358,1246 358,1254" fill="#000000" />
-  
-  <!-- AI-Pが改善要求回数をカウントアップ -->
-  <rect x="250" y="1300" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1316" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善要求回数</text>
-  <text x="300" y="1330" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">カウントアップ</text>
-  
-  <!-- 改善要求検知からカウントアップへの矢印 -->
-  <line x1="300" y1="1270" x2="300" y2="1300" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1300 296,1292 304,1292" fill="#000000" />
-  
-  <!-- 3回以上かチェック（決定ノード） -->
-  <polygon points="300,1370 315,1385 300,1400 285,1385" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-  
-  <!-- カウントアップから決定ノードへの矢印 -->
-  <line x1="300" y1="1340" x2="300" y2="1370" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1370 296,1362 304,1362" fill="#000000" />
-  
-  <!-- 6-B. 品質基準を満たした場合（または3回以上） -->
-  <!-- AI-QがGitHubイシューに品質承認をコメント -->
-  <rect x="1025" y="1590" width="100" height="40" rx="10" ry="10" fill="#f9e6ff" stroke="#9900cc" stroke-width="1.5" />
-  <text x="1075" y="1606" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">品質承認</text>
-  <text x="1075" y="1620" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">コメント</text>
-  
-  <!-- 決定ノード（品質チェック）から品質承認コメントへの矢印（Yes） -->
-  <line x1="1090" y1="1185" x2="1150" y2="1185" stroke="#000000" stroke-width="1.5" />
-  <line x1="1150" y1="1185" x2="1150" y2="1595" stroke="#000000" stroke-width="1.5" />
-  <line x1="1150" y1="1595" x2="1125" y2="1595" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1125,1595 1133,1591 1133,1599" fill="#000000" />
-  <text x="1125" y="1203" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Yes</text>
-  
-  <!-- 決定ノード（3回以上）から品質承認コメントへの矢印（Yes） -->
-  <line x1="315" y1="1385" x2="1175" y2="1385" stroke="#000000" stroke-width="1.5" />
-  <line x1="1175" y1="1385" x2="1175" y2="1610" stroke="#000000" stroke-width="1.5" />
-  <line x1="1175" y1="1610" x2="1125" y2="1610" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1125,1610 1133,1606 1133,1614" fill="#000000" />
-  <text x="330" y="1375" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Yes（3回以上）</text>
-  
-  <!-- AI-Pが子イシューを作成 -->
-  <rect x="250" y="1430" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1446" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">子イシュー</text>
-  <text x="300" y="1460" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">作成</text>
-  
-  <!-- 決定ノード（3回以上）から子イシュー作成への矢印（No） -->
-  <line x1="285" y1="1385" x2="260" y2="1385" stroke="#000000" stroke-width="1.5" />
-  <line x1="260" y1="1385" x2="260" y2="1430" stroke="#000000" stroke-width="1.5" />
-  <line x1="260" y1="1430" x2="250" y2="1430" stroke="#000000" stroke-width="1.5" />
-  <polygon points="250,1430 258,1426 258,1434" fill="#000000" />
-  <text x="250" y="1403" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">No（3回未満）</text>
-  
-  <!-- 改善項目の判断（決定ノード） -->
-  <polygon points="300,1500 315,1515 300,1530 285,1515" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-  
-  <!-- 子イシュー作成から改善項目の判断への矢印 -->
-  <line x1="300" y1="1470" x2="300" y2="1500" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1500 296,1492 304,1492" fill="#000000" />
-  
-  <!-- 改善項目の分岐: テスト改善のみ -->
-  <line x1="285" y1="1515" x2="200" y2="1515" stroke="#000000" stroke-width="1.5" />
-  <text x="250" y="1505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">テスト改善のみ</text>
-  
-  <!-- 改善項目の分岐: 機能改善のみ -->
-  <line x1="315" y1="1515" x2="400" y2="1515" stroke="#000000" stroke-width="1.5" />
-  <text x="350" y="1505" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">機能改善のみ</text>
-  
-  <!-- 改善項目の分岐: 両方改善 -->
-  <line x1="300" y1="1530" x2="300" y2="1560" stroke="#000000" stroke-width="1.5" />
-  <text x="330" y="1545" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">両方改善</text>
-  
-  <!-- 並列処理の分岐点（フォーク）- 両方改善の場合 -->
-  <rect x="275" y="1560" width="50" height="5" fill="#000000" />
-  
-  <!-- テスト改善が必要なケース - AI-T -->
-  <rect x="725" y="1500" width="100" height="40" rx="10" ry="10" fill="#e6f9ff" stroke="#0099cc" stroke-width="1.5" />
-  <text x="775" y="1523" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">テスト改善</text>
-  
-  <!-- テスト改善のみの矢印 -->
-  <line x1="200" y1="1515" x2="200" y2="1520" stroke="#000000" stroke-width="1.5" />
-  <line x1="200" y1="1520" x2="725" y2="1520" stroke="#000000" stroke-width="1.5" />
-  <polygon points="725,1520 717,1516 717,1524" fill="#000000" />
-  
-  <!-- 機能改善が必要なケース - AI-D -->
-  <rect x="875" y="1500" width="100" height="40" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="925" y="1523" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">機能改善</text>
-  
-  <!-- 機能改善のみの矢印 -->
-  <line x1="400" y1="1515" x2="400" y2="1520" stroke="#000000" stroke-width="1.5" />
-  <line x1="400" y1="1520" x2="875" y2="1520" stroke="#000000" stroke-width="1.5" />
-  <polygon points="875,1520 867,1516 867,1524" fill="#000000" />
-  
-  <!-- 両方改善の場合 - AI-T -->
-  <line x1="300" y1="1565" x2="300" y2="1575" stroke="#000000" stroke-width="1.5" />
-  <line x1="300" y1="1575" x2="775" y2="1575" stroke="#000000" stroke-width="1.5" />
-  <line x1="775" y1="1575" x2="775" y2="1540" stroke="#000000" stroke-width="1.5" />
-  <polygon points="775,1540 771,1548 779,1548" fill="#000000" />
-  
-  <!-- 両方改善の場合 - AI-D -->
-  <line x1="300" y1="1565" x2="300" y2="1575" stroke="#000000" stroke-width="1.5" />
-  <line x1="300" y1="1575" x2="925" y2="1575" stroke="#000000" stroke-width="1.5" />
-  <line x1="925" y1="1575" x2="925" y2="1540" stroke="#000000" stroke-width="1.5" />
-  <polygon points="925,1540 921,1548 929,1548" fill="#000000" />
-  
-  <!-- 並列処理の結合点（ジョイン） -->
-  <rect x="825" y="1600" width="50" height="5" fill="#000000" />
-  
-  <!-- テスト改善から結合点への矢印 -->
-  <line x1="775" y1="1540" x2="775" y2="1570" stroke="#000000" stroke-width="1.5" />
-  <line x1="775" y1="1570" x2="850" y2="1570" stroke="#000000" stroke-width="1.5" />
-  <line x1="850" y1="1570" x2="850" y2="1600" stroke="#000000" stroke-width="1.5" />
-  <polygon points="850,1600 846,1592 854,1592" fill="#000000" />
-  
-  <!-- 機能改善から結合点への矢印 -->
-  <line x1="925" y1="1540" x2="925" y2="1570" stroke="#000000" stroke-width="1.5" />
-  <line x1="925" y1="1570" x2="850" y2="1570" stroke="#000000" stroke-width="1.5" />
-  <!-- この矢印は上のテスト改善からの矢印と合流するため、矢印の終端は不要 -->
-  
-  <!-- 改善完了通知 -->
-  <rect x="800" y="1630" width="100" height="30" rx="10" ry="10" fill="#e6ffe6" stroke="#009900" stroke-width="1.5" />
-  <text x="850" y="1650" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善完了通知</text>
-  
-  <!-- 結合点から改善完了通知への矢印 -->
-  <line x1="850" y1="1605" x2="850" y2="1630" stroke="#000000" stroke-width="1.5" />
-  <polygon points="850,1630 846,1622 854,1622" fill="#000000" />
-  
-  <!-- AI-Pが改善完了を検知 -->
-  <rect x="250" y="1630" width="100" height="30" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1650" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善完了検知</text>
-  
-  <!-- 改善完了通知からAI-Pの改善完了検知への矢印 -->
-  <line x1="800" y1="1645" x2="350" y2="1645" stroke="#000000" stroke-width="1.5" />
-  <polygon points="350,1645 358,1641 358,1649" fill="#000000" />
-  
-  <!-- 7. 完了フェーズ -->
-  <!-- AI-QがPull Requestを作成 -->
-  <rect x="1025" y="1650" width="100" height="40" rx="10" ry="10" fill="#f9e6ff" stroke="#9900cc" stroke-width="1.5" />
-  <text x="1075" y="1673" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Pull Request作成</text>
-  
-  <!-- 品質承認コメントからPull Request作成への矢印 -->
-  <line x1="1075" y1="1630" x2="1075" y2="1650" stroke="#000000" stroke-width="1.5" />
-  <polygon points="1075,1650 1071,1642 1079,1642" fill="#000000" />
-  
-  <!-- AI-Pが完了処理 -->
-  <rect x="250" y="1650" width="100" height="40" rx="10" ry="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="1.5" />
-  <text x="300" y="1666" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">PR検知・マージ</text>
-  <text x="300" y="1680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">タスク完了</text>
-  
-  <!-- Pull Request作成からPR検知・マージへの矢印 -->
-  <line x1="1025" y1="1670" x2="350" y2="1670" stroke="#000000" stroke-width="1.5" />
-  <polygon points="350,1670 358,1666 358,1674" fill="#000000" />
-  
-  <!-- 終了ノード -->
-  <circle cx="300" cy="1720" r="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <circle cx="300" cy="1720" r="6" fill="#000000" />
-  
-  <!-- PR検知・マージから終了ノードへの矢印 -->
-  <line x1="300" y1="1690" x2="300" y2="1710" stroke="#000000" stroke-width="1.5" />
-  <polygon points="300,1710 296,1702 304,1702" fill="#000000" />
-  
-  <!-- 改善プロセスのループを示す破線矢印 -->
-  <line x1="300" y1="1660" x2="300" y2="1680" stroke="#999900" stroke-width="0" />
-  <line x1="200" y1="1645" x2="200" y2="1120" stroke="#999900" stroke-width="1.5" stroke-dasharray="5,5" />
-  <line x1="200" y1="1120" x2="250" y2="1120" stroke="#999900" stroke-width="1.5" stroke-dasharray="5,5" />
-  <polygon points="250,1120 242,1116 242,1124" fill="#999900" />
-  <text x="170" y="1380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666" transform="rotate(-90 170,1380)">改善プロセスのループ</text>
-  
-  <!-- UMLの注釈 -->
-  <rect x="500" y="1400" width="300" height="70" rx="5" ry="5" fill="#ffffcc" stroke="#999900" stroke-width="1" />
-  <text x="650" y="1420" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">改善項目の判断</text>
-  <text x="650" y="1440" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">AI-Pが必要な改善内容に応じて</text>
-  <text x="650" y="1460" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">適切なエージェントに割り当て（並列処理可能）</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1200" height="3400" viewBox="0 0 1200 3400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+      markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+
+    <!-- Define styles for UML elements -->
+    <style type="text/css"><![CDATA[
+      /* UML Activity styles */
+      .activity {
+        fill: #fff;
+        stroke: #333;
+        stroke-width: 2;
+        rx: 15;
+        ry: 15;
+      }
+
+      .swimlane {
+        fill: #f8f8f8;
+        stroke: #666;
+        stroke-width: 1.5;
+        stroke-dasharray: none;
+      }
+
+      .swimlane-header {
+        fill: #f0f0f0;
+        stroke: #666;
+        stroke-width: 1.5;
+      }
+
+      .decision {
+        fill: #fff;
+        stroke: #333;
+        stroke-width: 2;
+      }
+
+      .start-end {
+        fill: #333;
+        stroke: #333;
+        stroke-width: 2;
+      }
+
+      .end-node {
+        fill: #fff;
+        stroke: #333;
+        stroke-width: 3;
+      }
+
+      .control-flow {
+        stroke: #333;
+        stroke-width: 1.5;
+        fill: none;
+        marker-end: url(#arrow);
+      }
+
+      .agent-p { fill: #e1f5fe; }
+      .agent-a { fill: #e8f5e9; }
+      .agent-t { fill: #fff3e0; }
+      .agent-d { fill: #f3e5f5; }
+      .agent-q { fill: #e0f2f1; }
+      .agent-i { fill: #fce4ec; }
+
+      /* Text styles */
+      text {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        fill: #333;
+      }
+
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        text-anchor: middle;
+      }
+
+      .swimlane-title {
+        font-size: 16px;
+        font-weight: bold;
+        text-anchor: middle;
+      }
+
+      .activity-label {
+        font-size: 12px;
+        text-anchor: middle;
+      }
+
+      .phase-label {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .note {
+        fill: #fffacd;
+        stroke: #333;
+        stroke-width: 1;
+        rx: 5;
+        ry: 5;
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" class="title">roo code 開発オーケストレーションフロー</text>
+
+  <!-- Swimlanes -->
+  <g id="swimlanes">
+    <!-- User Swimlane -->
+    <rect x="50" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="50" y="50" width="150" height="50" class="swimlane-header"/>
+    <text x="125" y="80" class="swimlane-title">ユーザー</text>
+
+    <!-- AI-P Swimlane -->
+    <rect x="200" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="200" y="50" width="150" height="50" class="swimlane-header agent-p"/>
+    <text x="275" y="80" class="swimlane-title">AI-P</text>
+
+    <!-- AI-A Swimlane -->
+    <rect x="350" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="350" y="50" width="150" height="50" class="swimlane-header agent-a"/>
+    <text x="425" y="80" class="swimlane-title">AI-A</text>
+
+    <!-- AI-T Swimlane -->
+    <rect x="500" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="500" y="50" width="150" height="50" class="swimlane-header agent-t"/>
+    <text x="575" y="80" class="swimlane-title">AI-T</text>
+
+    <!-- AI-D Swimlane -->
+    <rect x="650" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="650" y="50" width="150" height="50" class="swimlane-header agent-d"/>
+    <text x="725" y="80" class="swimlane-title">AI-D</text>
+
+    <!-- AI-Q Swimlane -->
+    <rect x="800" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="800" y="50" width="150" height="50" class="swimlane-header agent-q"/>
+    <text x="875" y="80" class="swimlane-title">AI-Q</text>
+
+    <!-- AI-I Swimlane -->
+    <rect x="950" y="50" width="150" height="3300" class="swimlane"/>
+    <rect x="950" y="50" width="150" height="50" class="swimlane-header agent-i"/>
+    <text x="1025" y="80" class="swimlane-title">AI-I</text>
+  </g>
+
+  <!-- Phase Labels -->
+  <rect x="50" y="120" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="140" class="phase-label">0. 準備フェーズ</text>
+
+  <!-- Start node -->
+  <circle cx="125" cy="180" r="15" class="start-end"/>
+
+  <!-- 0. 準備フェーズ Activities -->
+  <rect x="75" y="220" width="100" height="60" class="activity"/>
+  <text x="125" y="250" class="activity-label">仕様書作成</text>
+  <text x="125" y="265" class="activity-label">(Claude desktop)</text>
+
+  <rect x="75" y="320" width="100" height="60" class="activity"/>
+  <text x="125" y="350" class="activity-label">開発プロジェクト</text>
+  <text x="125" y="365" class="activity-label">初期作成</text>
+
+  <rect x="75" y="420" width="100" height="60" class="activity"/>
+  <text x="125" y="450" class="activity-label">単一イシュー</text>
+  <text x="125" y="465" class="activity-label">作成</text>
+
+  <!-- Connections 0. Phase -->
+  <path d="M 125,195 L 125,220" class="control-flow"/>
+  <path d="M 125,280 L 125,320" class="control-flow"/>
+  <path d="M 125,380 L 125,420" class="control-flow"/>
+
+  <!-- Phase 1 Label -->
+  <rect x="50" y="500" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="520" class="phase-label">1. タスク受付フェーズ</text>
+
+  <!-- 1. タスク受付フェーズ Activities -->
+  <rect x="75" y="550" width="100" height="60" class="activity"/>
+  <text x="125" y="580" class="activity-label">イシューURL</text>
+  <text x="125" y="595" class="activity-label">をAI-Pに通知</text>
+
+  <rect x="225" y="550" width="100" height="60" class="activity"/>
+  <text x="275" y="580" class="activity-label">イシュー内容</text>
+  <text x="275" y="595" class="activity-label">読取・把握</text>
+
+  <rect x="225" y="650" width="100" height="60" class="activity"/>
+  <text x="275" y="680" class="activity-label">タスク受付完了</text>
+  <text x="275" y="695" class="activity-label">コメント追加</text>
+
+  <!-- Connections Phase 1 -->
+  <path d="M 125,480 L 125,550" class="control-flow"/>
+  <path d="M 175,580 L 225,580" class="control-flow"/>
+  <path d="M 275,610 L 275,650" class="control-flow"/>
+
+  <!-- Phase 2 Label -->
+  <rect x="50" y="730" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="750" class="phase-label">2. 分析・計画および環境準備フェーズ</text>
+
+  <!-- 2. 分析フェーズ Activities -->
+  <rect x="225" y="780" width="100" height="60" class="activity"/>
+  <text x="275" y="810" class="activity-label">AI-Aにモード</text>
+  <text x="275" y="825" class="activity-label">切り替え指示</text>
+
+  <rect x="375" y="780" width="100" height="60" class="activity"/>
+  <text x="425" y="810" class="activity-label">イシュー読取</text>
+  <text x="425" y="825" class="activity-label">タスク分析</text>
+
+  <rect x="375" y="880" width="100" height="60" class="activity"/>
+  <text x="425" y="910" class="activity-label">技術スタック</text>
+  <text x="425" y="925" class="activity-label">選定</text>
+
+  <rect x="375" y="980" width="100" height="60" class="activity"/>
+  <text x="425" y="1010" class="activity-label">プロジェクト構造</text>
+  <text x="425" y="1025" class="activity-label">設計・作成</text>
+
+  <rect x="375" y="1080" width="100" height="60" class="activity"/>
+  <text x="425" y="1110" class="activity-label">環境準備完了</text>
+  <text x="425" y="1125" class="activity-label">コメント追加</text>
+
+  <!-- Connections Phase 2 -->
+  <path d="M 275,710 L 275,780" class="control-flow"/>
+  <path d="M 325,810 L 375,810" class="control-flow"/>
+  <path d="M 425,840 L 425,880" class="control-flow"/>
+  <path d="M 425,940 L 425,980" class="control-flow"/>
+  <path d="M 425,1040 L 425,1080" class="control-flow"/>
+
+  <!-- Phase 3 Label (イシュー更新) -->
+  <rect x="50" y="1160" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="1180" class="phase-label">3. イシュー更新フェーズ</text>
+
+  <!-- 3. イシュー更新フェーズ Activities -->
+  <rect x="225" y="1210" width="100" height="60" class="activity"/>
+  <text x="275" y="1240" class="activity-label">環境準備確認</text>
+  <text x="275" y="1255" class="activity-label">コメント追加</text>
+
+  <!-- Phase 4 Label (テスト実装) -->
+  <rect x="50" y="1290" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="1310" class="phase-label">4. テスト実装フェーズ</text>
+
+  <!-- 4. テスト実装フェーズ Activities -->
+  <rect x="225" y="1340" width="100" height="60" class="activity"/>
+  <text x="275" y="1370" class="activity-label">AI-Tにモード</text>
+  <text x="275" y="1385" class="activity-label">切り替え指示</text>
+
+  <rect x="525" y="1340" width="100" height="60" class="activity"/>
+  <text x="575" y="1370" class="activity-label">コメント確認</text>
+  <text x="575" y="1385" class="activity-label">プロジェクト把握</text>
+
+  <rect x="525" y="1440" width="100" height="60" class="activity"/>
+  <text x="575" y="1470" class="activity-label">テストコード</text>
+  <text x="575" y="1485" class="activity-label">実装</text>
+
+  <rect x="525" y="1540" width="100" height="60" class="activity"/>
+  <text x="575" y="1570" class="activity-label">テスト実装完了</text>
+  <text x="575" y="1585" class="activity-label">コメント追加</text>
+
+  <!-- Connections between phases -->
+  <path d="M 425,1140 L 275,1210" class="control-flow"/>
+  <path d="M 275,1270 L 275,1340" class="control-flow"/>
+  <path d="M 325,1370 L 525,1370" class="control-flow"/>
+  <path d="M 575,1400 L 575,1440" class="control-flow"/>
+  <path d="M 575,1500 L 575,1540" class="control-flow"/>
+  <path d="M 525,1570 L 275,1630" class="control-flow"/>
+
+  <!-- Phase 5 -->
+  <rect x="50" y="1620" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="1640" class="phase-label">5. 機能実装フェーズ</text>
+
+  <rect x="225" y="1670" width="100" height="60" class="activity"/>
+  <text x="275" y="1700" class="activity-label">テスト実装確認</text>
+  <text x="275" y="1715" class="activity-label">コメント追加</text>
+
+  <!-- Phase 5 continues - from wf2.svg -->
+  <rect x="225" y="1750" width="100" height="60" class="activity"/>
+  <text x="275" y="1780" class="activity-label">AI-Dにモード</text>
+  <text x="275" y="1795" class="activity-label">切り替え指示</text>
+
+  <rect x="675" y="1750" width="100" height="60" class="activity"/>
+  <text x="725" y="1780" class="activity-label">コメント確認</text>
+  <text x="725" y="1795" class="activity-label">プロジェクト把握</text>
+
+  <rect x="675" y="1850" width="100" height="60" class="activity"/>
+  <text x="725" y="1880" class="activity-label">機能コード実装</text>
+  <text x="725" y="1895" class="activity-label">(公式ドキュメント参照)</text>
+
+  <rect x="675" y="1950" width="100" height="60" class="activity"/>
+  <text x="725" y="1980" class="activity-label">機能実装完了</text>
+  <text x="725" y="1995" class="activity-label">コメント追加</text>
+
+  <!-- Connections Phase 5 continued -->
+  <path d="M 275,1730 L 275,1750" class="control-flow"/>
+  <path d="M 325,1780 L 675,1780" class="control-flow"/>
+  <path d="M 725,1810 L 725,1850" class="control-flow"/>
+  <path d="M 725,1910 L 725,1950" class="control-flow"/>
+  <path d="M 675,1980 L 275,2020" class="control-flow"/>
+
+  <!-- Phase 6 Label -->
+  <rect x="50" y="2060" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="2080" class="phase-label">6. 品質保証・レビューフェーズ</text>
+
+  <!-- 6. 品質保証・レビューフェーズ Activities -->
+  <rect x="225" y="2110" width="100" height="60" class="activity"/>
+  <text x="275" y="2140" class="activity-label">機能実装確認</text>
+  <text x="275" y="2155" class="activity-label">コメント追加</text>
+
+  <rect x="225" y="2210" width="100" height="60" class="activity"/>
+  <text x="275" y="2240" class="activity-label">改善要求カウンター</text>
+  <text x="275" y="2255" class="activity-label">初期化(0)</text>
+
+  <rect x="225" y="2310" width="100" height="60" class="activity"/>
+  <text x="275" y="2340" class="activity-label">AI-Qにモード</text>
+  <text x="275" y="2355" class="activity-label">切り替え指示</text>
+
+  <rect x="825" y="2310" width="100" height="60" class="activity"/>
+  <text x="875" y="2340" class="activity-label">コードとテスト</text>
+  <text x="875" y="2355" class="activity-label">品質検証</text>
+
+  <!-- Quality Decision Diamond -->
+  <polygon points="875,2410 925,2460 875,2510 825,2460" class="decision"/>
+  <text x="875" y="2462" class="activity-label">改善が必要か?</text>
+
+  <!-- No path - Quality is good -->
+  <rect x="825" y="2550" width="100" height="60" class="activity"/>
+  <text x="875" y="2580" class="activity-label">品質承認</text>
+  <text x="875" y="2595" class="activity-label">コメント追加</text>
+
+  <rect x="825" y="2650" width="100" height="60" class="activity"/>
+  <text x="875" y="2680" class="activity-label">Pull Request</text>
+  <text x="875" y="2695" class="activity-label">作成</text>
+
+  <!-- Yes path - Improvement needed -->
+  <rect x="525" y="2550" width="100" height="60" class="activity"/>
+  <text x="575" y="2580" class="activity-label">改善要求</text>
+  <text x="575" y="2595" class="activity-label">コメント追加</text>
+
+  <rect x="225" y="2550" width="100" height="60" class="activity"/>
+  <text x="275" y="2580" class="activity-label">改善要求確認</text>
+  <text x="275" y="2595" class="activity-label">カウント更新</text>
+
+  <!-- Improvement Counter Decision Diamond -->
+  <polygon points="275,2650 325,2700 275,2750 225,2700" class="decision"/>
+  <text x="275" y="2690" class="activity-label">カウント &lt; 3 ?</text>
+  <text x="275" y="2705" class="activity-label">(3回未満)</text>
+
+  <!-- AI-T/AI-D Improvement Implementation -->
+  <rect x="525" y="2670" width="100" height="60" class="activity agent-t" opacity="0.8"/>
+  <text x="575" y="2700" class="activity-label">改善実装(テスト)</text>
+
+  <rect x="675" y="2670" width="100" height="60" class="activity agent-d" opacity="0.8"/>
+  <text x="725" y="2700" class="activity-label">改善実装(機能)</text>
+
+  <rect x="600" y="2770" width="100" height="60" class="activity"/>
+  <text x="650" y="2800" class="activity-label">改善実装完了</text>
+  <text x="650" y="2815" class="activity-label">コメント追加</text>
+
+  <rect x="225" y="2790" width="100" height="60" class="activity"/>
+  <text x="275" y="2820" class="activity-label">改善実装確認</text>
+  <text x="275" y="2835" class="activity-label">コメント追加</text>
+
+  <!-- Connections Phase 6 -->
+  <path d="M 275,2020 L 275,2110" class="control-flow"/>
+  <path d="M 275,2170 L 275,2210" class="control-flow"/>
+  <path d="M 275,2270 L 275,2310" class="control-flow"/>
+  <path d="M 325,2340 L 825,2340" class="control-flow"/>
+  <path d="M 875,2370 L 875,2410" class="control-flow"/>
+  <!-- Quality decision paths -->
+  <path d="M 875,2510 L 875,2550" class="control-flow"/>
+  <text x="890" y="2530" class="activity-label">いいえ</text>
+  <path d="M 825,2460 L 575,2460 L 575,2550" class="control-flow"/>
+  <text x="700" y="2450" class="activity-label">はい</text>
+  <!-- Improvement flow -->
+  <path d="M 525,2580 L 325,2580" class="control-flow"/>
+  <path d="M 275,2610 L 275,2650" class="control-flow"/>
+  <path d="M 325,2700 L 525,2700" class="control-flow"/>
+  <text x="400" y="2690" class="activity-label">はい</text>
+  <path d="M 525,2700 L 525,2730 L 600,2770" class="control-flow"/>
+  <path d="M 675,2700 L 675,2730 L 650,2770" class="control-flow"/>
+  <path d="M 600,2800 L 325,2800" class="control-flow"/>
+  <!-- Loop back for re-verification -->
+  <path d="M 275,2850 L 275,2880 L 1025,2880 L 1025,2340 L 925,2340" class="control-flow"/>
+  <!-- Max count reached -->
+  <path d="M 275,2750 L 275,2920 L 875,2920 L 875,2710" class="control-flow"/>
+  <text x="275" y="2770" class="activity-label">いいえ</text>
+  <text x="400" y="2910" class="activity-label">3回に達した場合は品質承認へ</text>
+
+  <!-- Additional Phase 6 connections -->
+  <path d="M 875,2610 L 875,2650" class="control-flow"/>
+  <path d="M 825,2680 L 750,2680 L 750,2970" class="control-flow"/>
+
+  <!-- Phase 7 Label -->
+  <rect x="50" y="3000" width="1050" height="30" fill="#eee" stroke="none"/>
+  <text x="60" y="3020" class="phase-label">7. 完了フェーズ</text>
+
+  <!-- 7. 完了フェーズ Activities -->
+  <rect x="225" y="3050" width="100" height="60" class="activity"/>
+  <text x="275" y="3080" class="activity-label">Pull Request確認</text>
+  <text x="275" y="3095" class="activity-label">マージ</text>
+
+  <rect x="225" y="3150" width="100" height="60" class="activity"/>
+  <text x="275" y="3180" class="activity-label">タスク完了</text>
+  <text x="275" y="3195" class="activity-label">コメント追加</text>
+
+  <rect x="225" y="3250" width="100" height="60" class="activity"/>
+  <text x="275" y="3280" class="activity-label">イシューを</text>
+  <text x="275" y="3295" class="activity-label">クローズに更新</text>
+
+  <!-- AI-I part -->
+  <rect x="975" y="3150" width="100" height="60" class="activity"/>
+  <text x="1025" y="3180" class="activity-label">コミットメッセージ</text>
+  <text x="1025" y="3195" class="activity-label">形式統一</text>
+
+  <!-- End node -->
+  <circle cx="275" cy="3360" r="15" class="start-end"/>
+  <circle cx="275" cy="3360" r="10" fill="white"/>
+
+  <!-- Connections Phase 7 -->
+  <path d="M 750,2970 L 750,3080 L 325,3080" class="control-flow"/>
+  <path d="M 275,3110 L 275,3150" class="control-flow"/>
+  <path d="M 275,3210 L 275,3250" class="control-flow"/>
+  <path d="M 275,3310 L 275,3345" class="control-flow"/>
+  <path d="M 325,3180 L 975,3180" class="control-flow" stroke-dasharray="3,3"/>
+
+  <!-- Note about commit message format -->
+  <rect x="965" y="3240" width="120" height="100" class="note"/>
+  <text x="1025" y="3260" class="activity-label">コミットメッセージ:</text>
+  <text x="1025" y="3275" class="activity-label">feat|fix|docs|style|</text>
+  <text x="1025" y="3290" class="activity-label">refactor|test|chore:</text>
+  <text x="1025" y="3305" class="activity-label">[AI-I] タスク完了</text>
+  <text x="1025" y="3320" class="activity-label">の概要...</text>
 </svg>
